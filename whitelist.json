@@ -1,1 +1,1 @@
-{"ips": [], "ports": [], "anomaly_threshold": 0, "logging": {"all_packets": true, "anomalies": true, "rag_context": true, "graph_edges": true}, "capture_interface": "wlo1"}
+{"ips": [], "ports": [], "anomaly_threshold": 0, "logging": {"all_packets": true, "anomalies": true, "rag_context": true, "graph_edges": true}, "capture_interface": "any"}

@@ -115,6 +115,7 @@ const SecurityTable = React.memo(({ flows, formatTime, selectedRows = [], onRowS
 ));
 
 const App = () => {
+  const apiBaseUrl = `${window.location.protocol}//${window.location.hostname}:8000`;
   const [flows, setFlows] = useState([]);
   const [stats, setStats] = useState({
     totalPackets: 0,
@@ -148,7 +149,7 @@ const App = () => {
   }, [isMonitoring]);
   const [selectedModel, setSelectedModel] = useState("arcee-ai/trinity-large-preview:free");
   const [showSettings, setShowSettings] = useState(false);
-  const [whitelist, setWhitelist] = useState({ ips: [], ports: [], anomaly_threshold: 0, capture_interface: 'wlo1', logging: { all_packets: true, anomalies: true, rag_context: true, graph_edges: true } });
+  const [whitelist, setWhitelist] = useState({ ips: [], ports: [], anomaly_threshold: 0, capture_interface: 'any', logging: { all_packets: true, anomalies: true, rag_context: true, graph_edges: true } });
   const [portsText, setPortsText] = useState('');
   const [isLoadingDevices, setIsLoadingDevices] = useState(false);
   const [isSpoofingLoading, setIsSpoofingLoading] = useState(false);
@@ -163,7 +164,7 @@ const App = () => {
   const fetchDevices = async () => {
     setIsLoadingDevices(true);
     try {
-      const res = await axios.get('http://localhost:8000/api/network/devices/');
+      const res = await axios.get(`${apiBaseUrl}/api/network/devices/`);
       setDevices(res.data);
     } catch (e) { console.error(e); }
     setIsLoadingDevices(false);
@@ -171,7 +172,7 @@ const App = () => {
 
   const fetchInterfaces = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/network/interfaces/');
+      const res = await axios.get(`${apiBaseUrl}/api/network/interfaces/`);
       setInterfaces(Array.isArray(res.data) ? res.data : []);
     } catch (e) { console.error(e); }
   };
@@ -184,23 +185,30 @@ const App = () => {
   const startSpoofing = async (targets) => {
     setIsSpoofingLoading(true);
     try {
-      await axios.post('http://localhost:8000/api/network/spoof/start/', { targets: targets.map(t => t.ip) });
+      await axios.post(`${apiBaseUrl}/api/network/spoof/start/`, {
+        targets: targets.map(t => t.ip),
+        interface: whitelist.capture_interface,
+      });
       setIsMonitoring(true);
-    } catch (e) { console.error(e); }
+      setSetupStep(0);
+    } catch (e) {
+      console.error(e);
+      const errorMessage = e?.response?.data?.error || e.message || 'Unknown error';
+      window.alert(`Failed to start interception: ${errorMessage}`);
+    }
     setIsSpoofingLoading(false);
-    setSetupStep(0);
   };
 
   const stopSpoofing = async () => {
     try {
-      await axios.post('http://localhost:8000/api/network/spoof/stop/');
+      await axios.post(`${apiBaseUrl}/api/network/spoof/stop/`);
       setIsMonitoring(false);
     } catch (e) { console.error(e); }
   };
 
   const fetchWhitelist = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/settings/whitelist/');
+      const res = await axios.get(`${apiBaseUrl}/api/settings/whitelist/`);
       const data = res.data;
       if (!data.logging) data.logging = { all_packets: true, anomalies: true, rag_context: true, graph_edges: true };
       setWhitelist(data);
@@ -210,7 +218,7 @@ const App = () => {
 
   const saveWhitelist = async (newWhitelist) => {
     try {
-      await axios.post('http://localhost:8000/api/settings/whitelist/', newWhitelist);
+      await axios.post(`${apiBaseUrl}/api/settings/whitelist/`, newWhitelist);
       setWhitelist(newWhitelist);
     } catch (e) { console.error(e); }
   };
@@ -479,7 +487,7 @@ const App = () => {
     setIsTyping(true);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/chat/', { messages: query });
+      const response = await axios.post(`${apiBaseUrl}/api/chat/`, { messages: query });
       setChatMessages(prev => [...prev, { role: 'assistant', text: response.data.result || response.data }]);
     } catch (error) {
       setChatMessages(prev => [...prev, { role: 'assistant', text: 'Error connecting to analysis engine.' }]);
@@ -504,11 +512,11 @@ Description: ${r.last_packet_info}
 Packets: ${r.packet_count}
 Encryption: ${r.encryption}
 `).join('\n---\n')}
-----------------------------
+    ----------------------------
 ` : '';
 
     try {
-      const response = await axios.post('http://localhost:8000/api/chat/', {
+      const response = await axios.post(`${apiBaseUrl}/api/chat/`, {
         messages: message,
         model: selectedModel,
         selected_row: rowContext

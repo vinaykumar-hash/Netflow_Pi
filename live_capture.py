@@ -88,14 +88,14 @@ def main():
     if os.path.exists(OUTPUT_FILE):
         os.rename(OUTPUT_FILE, f"{OUTPUT_FILE}.bak")
     
-    # Read capture interface from whitelist.json (falls back to wlo1)
+    # Read capture interface from whitelist.json (falls back to any on Linux)
     WHITELIST_FILE = "whitelist.json"
-    capture_interface = "wlo1"
+    capture_interface = "any"
     try:
         if os.path.exists(WHITELIST_FILE):
             with open(WHITELIST_FILE, "r") as f:
                 wl = json.load(f)
-                capture_interface = wl.get("capture_interface", "wlo1") or "wlo1"
+                capture_interface = wl.get("capture_interface", "any") or "any"
     except Exception:
         pass
     print(f"Capture interface: {capture_interface}")

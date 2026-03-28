@@ -3,17 +3,10 @@ import uuid
 import os
 import requests
 import json
-import torch
-from sentence_transformers import SentenceTransformer, util
+import time
 import pathway as pw
 import datetime
 from typing import Any
-from pathway.stdlib.indexing.nearest_neighbors import BruteForceKnnFactory
-from pathway.xpacks.llm import llms
-from pathway.xpacks.llm.document_store import DocumentStore
-from pathway.xpacks.llm.llms import LiteLLMChat
-from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
-import os
 from dotenv import load_dotenv
 
 from features.feature_tcp_flags import detect_abnormal_flags
@@ -25,6 +18,37 @@ from features.feature_flow_stats import compute_flow_stats
 import uuid
 
 load_dotenv()
+
+_embedder_model = None
+_semantic_search_util = None
+_semantic_search_import_error = None
+
+
+def _load_semantic_search_deps():
+    global _semantic_search_util, _semantic_search_import_error
+    if _semantic_search_util is not None:
+        return _semantic_search_util
+    if _semantic_search_import_error is not None:
+        return None
+    try:
+        from sentence_transformers import SentenceTransformer, util
+        _semantic_search_util = (SentenceTransformer, util)
+        return _semantic_search_util
+    except Exception as exc:
+        _semantic_search_import_error = exc
+        return None
+
+
+def _get_embedder_model():
+    global _embedder_model
+    if _embedder_model is not None:
+        return _embedder_model
+    deps = _load_semantic_search_deps()
+    if deps is None:
+        return None
+    SentenceTransformer, _ = deps
+    _embedder_model = SentenceTransformer("all-MiniLM-L6-v2")
+    return _embedder_model
 
 class PacketSchema(pw.Schema):
     timestamp: float
@@ -96,8 +120,6 @@ def _update_whitelist_if_needed():
                 pass
 
 if os.path.exists(WHITELIST_FILE):
-    import json
-    import time
     _update_whitelist_if_needed()
 
 def _is_logging_enabled(key: str) -> bool:
@@ -479,12 +501,27 @@ def is_above_threshold(score: float) -> bool:
         threshold = 0.0
     return score >= threshold
 
+
+@pw.udf
+def should_emit_to_dashboard(score: float, whitelisted: bool) -> bool:
+    _update_whitelist_if_needed()
+    try:
+        threshold = float(WHITELIST.get("anomaly_threshold", 0.0))
+    except (ValueError, TypeError):
+        threshold = 0.0
+    if threshold <= 0.0:
+        return True
+    return (score >= threshold) and (not whitelisted)
+
 # anomalous_pulse = flow_pulse.filter(
 #     pw.this.anomaly_score > 0.5
 # )
 # anomalous_pulse = flow_pulse.filter(~pw.this.whitelisted)
 anomalous_pulse = flow_pulse.filter(
     is_above_threshold(pw.this.anomaly_score) & (~pw.this.whitelisted)
+)
+dashboard_pulse = flow_pulse.filter(
+    should_emit_to_dashboard(pw.this.anomaly_score, pw.this.whitelisted)
 )
 port_monitor = flows_internal.filter(
     pw.this.is_internal_target & (~pw.this.whitelisted)
@@ -506,7 +543,7 @@ port_alerts = port_monitor.filter(
 )
 
 pw.io.http.write(
-    anomalous_pulse,
+    dashboard_pulse,
     url="http://localhost:8000/api/update/",
     method="POST",
     headers={"Content-Type": "application/json"}
@@ -638,23 +675,14 @@ pw.io.csv.write(
     filename="docs/rag_context.csv"
 )
 
-from sentence_transformers import SentenceTransformer, util
-import torch
-
-_embedder_model = None
-
 @pw.udf
 def semantic_search_udf(query: str, context_list: tuple) -> list:
-    global _embedder_model
     if not context_list:
         return []
     
     # We maintain only the last 50 chunks for performance and relevance
     raw_list = list(context_list)
     active_context = raw_list[-50:]
-    
-    if _embedder_model is None:
-        _embedder_model = SentenceTransformer("all-MiniLM-L6-v2")
     
     str_chunks = []
     for c in active_context:
@@ -663,8 +691,14 @@ def semantic_search_udf(query: str, context_list: tuple) -> list:
         else:
             str_chunks.append(str(c))
 
-    query_emb = _embedder_model.encode(query, convert_to_tensor=True)
-    corpus_emb = _embedder_model.encode(str_chunks, convert_to_tensor=True)
+    deps = _load_semantic_search_deps()
+    embedder_model = _get_embedder_model()
+    if deps is None or embedder_model is None:
+        return [{"text": chunk} for chunk in str_chunks[:3]]
+    _, util = deps
+
+    query_emb = embedder_model.encode(query, convert_to_tensor=True)
+    corpus_emb = embedder_model.encode(str_chunks, convert_to_tensor=True)
     
     # Compute similarity
     hits = util.semantic_search(query_emb, corpus_emb, top_k=3)[0]
@@ -748,8 +782,6 @@ prompts = retrieved_documents.select(
 
 @pw.udf
 def call_openrouter(query: str, model: str | None, selected_row: str | None) -> str:
-    global _embedder_model
-    
     # --- RAG SIDE-CAR: READ FROM CSV ---
     context_str = ""
     try:
@@ -788,15 +820,15 @@ def call_openrouter(query: str, model: str | None, selected_row: str | None) -> 
                     if any(kw.lower() in doc.lower() for kw in keywords):
                         priority_docs.append(doc)
                 
-                # Semantic Search
-                if _embedder_model is None:
-                    _embedder_model = SentenceTransformer("all-MiniLM-L6-v2")
-                
-                query_emb = _embedder_model.encode(query, convert_to_tensor=True)
-                corpus_emb = _embedder_model.encode(active_context, convert_to_tensor=True)
-                # Increase top_k to 10 for better coverage
-                hits = util.semantic_search(query_emb, corpus_emb, top_k=min(10, len(active_context)))[0]
-                semantic_docs = [str(active_context[hit["corpus_id"]]) for hit in hits]
+                semantic_docs = []
+                deps = _load_semantic_search_deps()
+                embedder_model = _get_embedder_model()
+                if deps is not None and embedder_model is not None:
+                    _, util = deps
+                    query_emb = embedder_model.encode(query, convert_to_tensor=True)
+                    corpus_emb = embedder_model.encode(active_context, convert_to_tensor=True)
+                    hits = util.semantic_search(query_emb, corpus_emb, top_k=min(10, len(active_context)))[0]
+                    semantic_docs = [str(active_context[hit["corpus_id"]]) for hit in hits]
                 
                 # Combine: Keywords first, then Semantic
                 final_docs = []

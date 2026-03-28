@@ -3,8 +3,8 @@
 > vite --host 0.0.0.0
 
 
-  VITE v5.4.21  ready in 265 ms
+  VITE v5.4.21  ready in 768 ms
 
   ➜  Local:   http://localhost:5173/
-  ➜  Network: http://192.168.1.12:5173/
+  ➜  Network: http://192.168.1.14:5173/
   ➜  press h + enter to show help

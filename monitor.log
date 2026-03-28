@@ -1,7 +1,1 @@
 Starting System Monitor...
-Traceback (most recent call last):
-  File "/home/vinay/Documents/Netflow/system_monitor.py", line 85, in <module>
-    main()
-  File "/home/vinay/Documents/Netflow/system_monitor.py", line 53, in main
-    time.sleep(2)
-KeyboardInterrupt

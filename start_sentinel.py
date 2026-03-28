@@ -3,11 +3,25 @@ import time
 import os
 import signal
 import sys
+import shutil
 
 def start():
-    root = os.getcwd()
+    root = os.path.dirname(os.path.abspath(__file__))
     venv_python = f"{root}/.venv/bin/python"
     daphne = f"{root}/.venv/bin/daphne"
+
+    try:
+        subprocess.run(
+            [venv_python, "-c", "import sys; print(sys.executable)"],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        print("\n[CRITICAL] Sentinel virtualenv is not healthy.")
+        print(f"Expected working interpreter: {venv_python}")
+        print("Rebuild the environment with: uv venv --python /usr/bin/python3.13 .venv && uv sync --python /usr/bin/python3.13")
+        sys.exit(1)
     
     # 1. Cleanup
     print("--- Sentinel Orchestrator ---")
@@ -37,7 +51,6 @@ def start():
     )
 
     # 3. Start Live Capture
-    import shutil
     tshark_path = shutil.which("tshark")
     if not tshark_path and os.path.exists("/usr/bin/tshark"):
         tshark_path = "/usr/bin/tshark"
@@ -70,9 +83,18 @@ def start():
     )
 
     # 5. Start Frontend
+    npm_path = shutil.which("npm")
+    if not npm_path:
+        print("\n[CRITICAL] npm is not installed or not available on PATH.")
+        print("Install Node.js/npm, then rerun start_sentinel.py.")
+        for proc in (django_proc, pathway_proc, capture_proc, monitor_proc if 'monitor_proc' in locals() else None):
+            if proc:
+                proc.terminate()
+        sys.exit(1)
+
     print("Launching React Dashboard (Port 5173)...")
     vite_proc = subprocess.Popen(
-        ["npm", "run", "dev", "--", "--host", "0.0.0.0"],
+        [npm_path, "run", "dev", "--", "--host", "0.0.0.0"],
         cwd=f"{root}/dashboard/frontend",
         stdout=open(f"{root}/vite.log", "w"),
         stderr=subprocess.STDOUT

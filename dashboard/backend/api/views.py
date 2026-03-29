@@ -11,6 +11,91 @@ import re
 import time
 from pathlib import Path
 
+from .autoencoder_manager import (
+    disable_detection,
+    enable_detection,
+    get_status as get_autoencoder_status,
+    start_training,
+    stop_training,
+)
+
+
+FLOW_CACHE = {}
+AUTOENCODER_CACHE = {}
+CACHE_TTL_SECONDS = 60
+
+
+def _cleanup_caches():
+    now = time.time()
+    for cache in (FLOW_CACHE, AUTOENCODER_CACHE):
+        stale_keys = [
+            key for key, value in cache.items()
+            if now - float(value.get("_cache_updated_at", 0)) > CACHE_TTL_SECONDS
+        ]
+        for key in stale_keys:
+            cache.pop(key, None)
+
+
+def _base_flow_status(flow: dict) -> dict:
+    anomaly_score = float(flow.get("anomaly_score") or 0)
+    last_info = str(flow.get("last_packet_info") or "").strip()
+    is_anomaly = anomaly_score > 0 and bool(last_info)
+    normalized = dict(flow)
+    normalized["type"] = "flow_update"
+    normalized["detector"] = normalized.get("detector") or "heuristic"
+    normalized["status"] = "anomaly" if is_anomaly else "ok"
+    normalized["_cache_updated_at"] = time.time()
+    return normalized
+
+
+def _overlay_score(score: dict) -> dict:
+    normalized = dict(score)
+    normalized["type"] = "autoencoder_score"
+    normalized["detector"] = "autoencoder"
+    normalized["_cache_updated_at"] = time.time()
+    return normalized
+
+
+def _merge_flow_payload(flow_key: str) -> dict | None:
+    base = FLOW_CACHE.get(flow_key)
+    overlay = AUTOENCODER_CACHE.get(flow_key)
+    if base is None:
+        return None
+
+    engine = get_autoencoder_status().get("engine", "heuristic")
+    merged = dict(base)
+    if overlay:
+        merged["autoencoder_error"] = overlay.get("autoencoder_error")
+        merged["autoencoder_mean_error"] = overlay.get("autoencoder_mean_error")
+        merged["anomalous_packet_count"] = overlay.get("anomalous_packet_count", 0)
+    if engine == "autoencoder" and overlay:
+        merged["anomaly_score"] = overlay.get("anomaly_score", 0)
+        merged["last_packet_info"] = overlay.get("last_packet_info", merged.get("last_packet_info"))
+        merged["detector"] = "autoencoder"
+        merged["status"] = overlay.get("status", "ok")
+        merged["packet_count"] = max(
+            int(merged.get("packet_count") or 0),
+            int(overlay.get("packet_count") or 0),
+        )
+        merged["last_packet_time"] = overlay.get("last_packet_time", merged.get("last_packet_time"))
+    else:
+        merged["detector"] = merged.get("detector") or "heuristic"
+        merged["status"] = merged.get("status") or "ok"
+    merged["type"] = "flow_update"
+    merged.pop("_cache_updated_at", None)
+    return merged
+
+
+def _broadcast_update(update: dict):
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "packets",
+        {
+            "type": "send_packet_update",
+            "data": update,
+        },
+    )
+
 class NetworkInterfacesView(APIView):
     """Returns available network interfaces from the OS."""
     def get(self, request):
@@ -42,19 +127,34 @@ class NetworkInterfacesView(APIView):
 
 class PacketUpdateView(APIView):
     def post(self, request):
-        channel_layer = get_channel_layer()
         data = request.data
-        
         updates = data if isinstance(data, list) else [data]
-        
+        _cleanup_caches()
+
         for update in updates:
-            async_to_sync(channel_layer.group_send)(
-                "packets",
-                {
-                    "type": "send_packet_update",
-                    "data": update
-                }
-            )
+            update_type = update.get("type")
+            if update_type in {"graph_edge", "port_alert", "system_stats"}:
+                _broadcast_update(update)
+                continue
+
+            if update_type == "autoencoder_score":
+                flow_key = update.get("flow")
+                if not flow_key:
+                    continue
+                AUTOENCODER_CACHE[flow_key] = _overlay_score(update)
+                merged = _merge_flow_payload(flow_key)
+                if merged:
+                    _broadcast_update(merged)
+                continue
+
+            flow_key = update.get("flow")
+            if not flow_key:
+                _broadcast_update(update)
+                continue
+            FLOW_CACHE[flow_key] = _base_flow_status(update)
+            merged = _merge_flow_payload(flow_key)
+            if merged:
+                _broadcast_update(merged)
         return Response({"status": f"broadcasted {len(updates)} updates"}, status=status.HTTP_200_OK)
 
 class ChatProxyView(APIView):
@@ -314,3 +414,49 @@ class WhitelistSettingsView(APIView):
             return Response({"status": "Whitelist updated successfully"})
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class AutoencoderStatusView(APIView):
+    def get(self, request):
+        return Response(get_autoencoder_status(), status=status.HTTP_200_OK)
+
+
+class AutoencoderTrainStartView(APIView):
+    def post(self, request):
+        replace_existing = bool(request.data.get("replace_existing", True))
+        try:
+            status_payload = start_training(replace_existing=replace_existing)
+            return Response(status_payload, status=status.HTTP_200_OK)
+        except RuntimeError as exc:
+            return Response({"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as exc:
+            return Response({"error": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class AutoencoderTrainStopView(APIView):
+    def post(self, request):
+        try:
+            status_payload = stop_training()
+            return Response(status_payload, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({"error": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class AutoencoderDetectionEnableView(APIView):
+    def post(self, request):
+        try:
+            status_payload = enable_detection()
+            return Response(status_payload, status=status.HTTP_200_OK)
+        except RuntimeError as exc:
+            return Response({"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as exc:
+            return Response({"error": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class AutoencoderDetectionDisableView(APIView):
+    def post(self, request):
+        try:
+            status_payload = disable_detection()
+            return Response(status_payload, status=status.HTTP_200_OK)
+        except Exception as exc:
+            return Response({"error": str(exc)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

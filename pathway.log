@@ -1,483 +1,69 @@
-/home/pi/Documents/Netflow/.venv/lib/python3.13/site-packages/beartype/_util/hint/pep/utilpeptest.py:311: BeartypeDecorHintPep585DeprecationWarning: PEP 484 type hint typing.Iterable[pathway.internals.expression.ColumnReference] deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
+/home/pi/Documents/Netflow/.venv/lib/python3.12/site-packages/beartype/_util/hint/pep/utilpeptest.py:311: BeartypeDecorHintPep585DeprecationWarning: PEP 484 type hint typing.Iterable[pathway.internals.expression.ColumnReference] deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
     https://beartype.readthedocs.io/en/latest/api_roar/#pep-585-deprecations
   warn(
-/home/pi/Documents/Netflow/.venv/lib/python3.13/site-packages/beartype/_util/hint/pep/utilpeptest.py:311: BeartypeDecorHintPep585DeprecationWarning: PEP 484 type hint typing.Sequence[str] deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
+/home/pi/Documents/Netflow/.venv/lib/python3.12/site-packages/beartype/_util/hint/pep/utilpeptest.py:311: BeartypeDecorHintPep585DeprecationWarning: PEP 484 type hint typing.Sequence[str] deprecated by PEP 585. This hint is scheduled for removal in the first Python version released after October 5th, 2025. To resolve this, import this hint from "beartype.typing" rather than "typing". For further commentary and alternatives, see also:
     https://beartype.readthedocs.io/en/latest/api_roar/#pep-585-deprecations
   warn(
-[2026-03-29T02:54:56]:INFO:Preparing Pathway computation
-[2026-03-29T02:54:56]:INFO:Enter read_snapshot method with reader PosixLike
-[2026-03-29T02:54:56]:INFO:Enter read_snapshot method with reader Python
-[2026-03-29T02:54:56]:INFO:FileSystem(live_data/stream.jsonl): 0 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T02:54:56]:INFO:PythonReader: 0 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T02:54:57]:INFO:FileSystem(logs/all_packets.csv): Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:subscribe-1: Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:subscribe-2: Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:subscribe-2: Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:subscribe-4: Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:54:57]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733096066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:01]:INFO:FileSystem(live_data/stream.jsonl): 130756 entries (19 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:03]:INFO:subscribe-2: Done writing 62 entries, time 1774733097092. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:06]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 70 entries, time 1774733097264. Current batch writes took: 1 ms. All writes so far took: 1 ms.
-[2026-03-29T02:55:07]:INFO:subscribe-2: Done writing 70 entries, time 1774733097264. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:07]:INFO:FileSystem(live_data/stream.jsonl): 204510 entries (19 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:07]:INFO:FileSystem(logs/all_packets.csv): Done writing 4995 entries, time 1774733102168. Current batch writes took: 41 ms. All writes so far took: 41 ms.
-[2026-03-29T02:55:08]:INFO:subscribe-2: Done writing 30 entries, time 1774733097758. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:12]:INFO:subscribe-1: Done writing 15 entries, time 1774733096858. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:12]:INFO:FileSystem(docs/anomalies.csv): Done writing 15 entries, time 1774733096858. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:12]:INFO:FileSystem(live_data/stream.jsonl): 79393 entries (10 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:13]:INFO:FileSystem(logs/all_packets.csv): Done writing 1613 entries, time 1774733111142. Current batch writes took: 28 ms. All writes so far took: 69 ms.
-[2026-03-29T02:55:15]:INFO:subscribe-2: Done writing 60 entries, time 1774733098952. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:15]:INFO:subscribe-2: Done writing 81 entries, time 1774733098952. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:15]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 81 entries, time 1774733098952. Current batch writes took: 2 ms. All writes so far took: 3 ms.
-[2026-03-29T02:55:15]:INFO:FileSystem(docs/rag_context.csv): Done writing 15 entries, time 1774733096858. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:17]:INFO:subscribe-1: Done writing 49 entries, time 1774733099376. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:18]:INFO:FileSystem(live_data/stream.jsonl): 39871 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:18]:INFO:FileSystem(logs/all_packets.csv): Done writing 98 entries, time 1774733118348. Current batch writes took: 1 ms. All writes so far took: 71 ms.
-[2026-03-29T02:55:21]:INFO:FileSystem(docs/anomalies.csv): Done writing 53 entries, time 1774733099606. Current batch writes took: 0 ms. All writes so far took: 1 ms.
-[2026-03-29T02:55:23]:INFO:subscribe-2: Done writing 110 entries, time 1774733102168. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:27]:INFO:FileSystem(live_data/stream.jsonl): 107498 entries (11 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:27]:INFO:FileSystem(docs/rag_context.csv): Done writing 53 entries, time 1774733099606. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:28]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 111 entries, time 1774733102168. Current batch writes took: 0 ms. All writes so far took: 4 ms.
-[2026-03-29T02:55:30]:INFO:subscribe-2: Done writing 111 entries, time 1774733102168. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:30]:INFO:subscribe-2: Done writing 85 entries, time 1774733106430. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:30]:INFO:FileSystem(logs/all_packets.csv): Done writing 14 entries, time 1774733123206. Current batch writes took: 0 ms. All writes so far took: 71 ms.
-[2026-03-29T02:55:33]:INFO:FileSystem(live_data/stream.jsonl): 67377 entries (9 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:34]:INFO:subscribe-1: Done writing 24 entries, time 1774733102168. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:34]:INFO:FileSystem(docs/anomalies.csv): Done writing 20 entries, time 1774733102168. Current batch writes took: 1 ms. All writes so far took: 2 ms.
-[2026-03-29T02:55:36]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 128 entries, time 1774733115334. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:55:36]:INFO:subscribe-2: Done writing 128 entries, time 1774733115334. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:36]:INFO:FileSystem(docs/rag_context.csv): Done writing 18 entries, time 1774733102168. Current batch writes took: 0 ms. All writes so far took: 1 ms.
-[2026-03-29T02:55:36]:INFO:FileSystem(logs/all_packets.csv): Done writing 596 entries, time 1774733134594. Current batch writes took: 4 ms. All writes so far took: 76 ms.
-[2026-03-29T02:55:36]:INFO:subscribe-2: Done writing 15 entries, time 1774733117398. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:39]:INFO:FileSystem(live_data/stream.jsonl): 124136 entries (10 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:40]:INFO:subscribe-1: Done writing 32 entries, time 1774733118348. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:40]:INFO:FileSystem(docs/anomalies.csv): Done writing 32 entries, time 1774733118348. Current batch writes took: 1 ms. All writes so far took: 4 ms.
-[2026-03-29T02:55:41]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 45 entries, time 1774733127920. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:55:41]:INFO:subscribe-2: Done writing 45 entries, time 1774733127920. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:41]:INFO:FileSystem(docs/rag_context.csv): Done writing 34 entries, time 1774733121600. Current batch writes took: 0 ms. All writes so far took: 1 ms.
-[2026-03-29T02:55:42]:INFO:FileSystem(logs/all_packets.csv): Done writing 846 entries, time 1774733141164. Current batch writes took: 6 ms. All writes so far took: 82 ms.
-[2026-03-29T02:55:43]:INFO:subscribe-2: Done writing 34 entries, time 1774733136188. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:44]:INFO:FileSystem(live_data/stream.jsonl): 32648 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:45]:INFO:subscribe-1: Done writing 28 entries, time 1774733136188. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:45]:INFO:FileSystem(docs/anomalies.csv): Done writing 28 entries, time 1774733136188. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:55:46]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 75 entries, time 1774733137366. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:55:47]:INFO:subscribe-2: Done writing 96 entries, time 1774733145802. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:47]:INFO:FileSystem(logs/all_packets.csv): Done writing 3 entries, time 1774733147198. Current batch writes took: 0 ms. All writes so far took: 82 ms.
-[2026-03-29T02:55:47]:INFO:FileSystem(docs/rag_context.csv): Done writing 34 entries, time 1774733147198. Current batch writes took: 0 ms. All writes so far took: 1 ms.
-[2026-03-29T02:55:48]:INFO:subscribe-2: Done writing 15 entries, time 1774733148582. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:50]:INFO:FileSystem(live_data/stream.jsonl): 65337 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:51]:INFO:subscribe-1: Done writing 14 entries, time 1774733151570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:51]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 38 entries, time 1774733151570. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:55:51]:INFO:FileSystem(docs/anomalies.csv): Done writing 14 entries, time 1774733151570. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:55:52]:INFO:FileSystem(logs/all_packets.csv): Done writing 71 entries, time 1774733152580. Current batch writes took: 0 ms. All writes so far took: 83 ms.
-[2026-03-29T02:55:53]:INFO:subscribe-2: Done writing 29 entries, time 1774733152580. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:53]:INFO:FileSystem(docs/rag_context.csv): Done writing 7 entries, time 1774733152580. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:55:54]:INFO:subscribe-2: Done writing 5 entries, time 1774733154298. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:55]:INFO:FileSystem(live_data/stream.jsonl): 82346 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:55:56]:INFO:subscribe-1: Done writing 7 entries, time 1774733156824. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:56]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 32 entries, time 1774733156824. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:55:56]:INFO:FileSystem(docs/anomalies.csv): Done writing 7 entries, time 1774733156824. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:55:59]:INFO:FileSystem(logs/all_packets.csv): Done writing 12 entries, time 1774733159070. Current batch writes took: 0 ms. All writes so far took: 84 ms.
-[2026-03-29T02:55:59]:INFO:subscribe-2: Done writing 20 entries, time 1774733159070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:55:59]:INFO:FileSystem(docs/rag_context.csv): Done writing 4 entries, time 1774733159070. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:00]:INFO:FileSystem(live_data/stream.jsonl): 32988 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:00]:INFO:subscribe-2: Done writing 0 entries, time 1774733160572. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:02]:INFO:subscribe-1: Done writing 0 entries, time 1774733162070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:02]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733162070. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:02]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774733162070. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:56:05]:INFO:FileSystem(logs/all_packets.csv): Done writing 4 entries, time 1774733165406. Current batch writes took: 0 ms. All writes so far took: 84 ms.
-[2026-03-29T02:56:05]:INFO:subscribe-2: Done writing 0 entries, time 1774733165406. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:05]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733165406. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:05]:INFO:FileSystem(live_data/stream.jsonl): 33012 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:05]:INFO:subscribe-2: Done writing 0 entries, time 1774733165904. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:07]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733166978. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:56:07]:INFO:subscribe-1: Done writing 1 entries, time 1774733166978. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:07]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733166978. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:11]:INFO:FileSystem(live_data/stream.jsonl): 66164 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:11]:INFO:FileSystem(logs/all_packets.csv): Done writing 22 entries, time 1774733171070. Current batch writes took: 0 ms. All writes so far took: 84 ms.
-[2026-03-29T02:56:11]:INFO:subscribe-2: Done writing 10 entries, time 1774733171070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:11]:INFO:subscribe-2: Done writing 10 entries, time 1774733171070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:11]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733171070. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:14]:INFO:subscribe-1: Done writing 1 entries, time 1774733174070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:14]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733174070. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:14]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733174070. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:56:16]:INFO:FileSystem(live_data/stream.jsonl): 16552 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:16]:INFO:FileSystem(logs/all_packets.csv): Done writing 4 entries, time 1774733176684. Current batch writes took: 0 ms. All writes so far took: 84 ms.
-[2026-03-29T02:56:16]:INFO:subscribe-2: Done writing 0 entries, time 1774733176684. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:16]:INFO:subscribe-2: Done writing 0 entries, time 1774733176684. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:16]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733176684. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:19]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733178744. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:56:19]:INFO:subscribe-1: Done writing 1 entries, time 1774733178744. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:19]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733178744. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:21]:INFO:FileSystem(live_data/stream.jsonl): 82856 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:21]:INFO:FileSystem(logs/all_packets.csv): Done writing 14 entries, time 1774733181800. Current batch writes took: 0 ms. All writes so far took: 85 ms.
-[2026-03-29T02:56:21]:INFO:subscribe-2: Done writing 10 entries, time 1774733181800. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:21]:INFO:subscribe-2: Done writing 10 entries, time 1774733181800. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:21]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733181800. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:24]:INFO:subscribe-1: Done writing 1 entries, time 1774733184872. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:24]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733184872. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:24]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733184872. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:27]:INFO:FileSystem(live_data/stream.jsonl): 83008 entries (7 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:27]:INFO:FileSystem(logs/all_packets.csv): Done writing 14 entries, time 1774733187570. Current batch writes took: 0 ms. All writes so far took: 85 ms.
-[2026-03-29T02:56:27]:INFO:subscribe-2: Done writing 0 entries, time 1774733187570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:27]:INFO:subscribe-2: Done writing 0 entries, time 1774733187570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:27]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733187570. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:30]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733190378. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:30]:INFO:subscribe-1: Done writing 1 entries, time 1774733190378. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:30]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733190378. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:32]:INFO:FileSystem(live_data/stream.jsonl): 66886 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:32]:INFO:FileSystem(logs/all_packets.csv): Done writing 66 entries, time 1774733192588. Current batch writes took: 0 ms. All writes so far took: 86 ms.
-[2026-03-29T02:56:32]:INFO:subscribe-2: Done writing 15 entries, time 1774733192588. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:32]:INFO:subscribe-2: Done writing 0 entries, time 1774733192588. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:32]:INFO:FileSystem(docs/rag_context.csv): Done writing 1 entries, time 1774733192588. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:37]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 16 entries, time 1774733196908. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:37]:INFO:subscribe-1: Done writing 1 entries, time 1774733196908. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:37]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733196908. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:38]:INFO:FileSystem(live_data/stream.jsonl): 101549 entries (7 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:38]:INFO:FileSystem(logs/all_packets.csv): Done writing 107 entries, time 1774733198070. Current batch writes took: 7 ms. All writes so far took: 93 ms.
-[2026-03-29T02:56:38]:INFO:subscribe-2: Done writing 6 entries, time 1774733198070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:38]:INFO:subscribe-2: Done writing 5 entries, time 1774733198070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:38]:INFO:FileSystem(docs/rag_context.csv): Done writing 1 entries, time 1774733198070. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:42]:INFO:subscribe-1: Done writing 0 entries, time 1774733202570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:42]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 10 entries, time 1774733202570. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:42]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733202570. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:43]:INFO:FileSystem(live_data/stream.jsonl): 33922 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:44]:INFO:FileSystem(logs/all_packets.csv): Done writing 4 entries, time 1774733203970. Current batch writes took: 0 ms. All writes so far took: 94 ms.
-[2026-03-29T02:56:44]:INFO:subscribe-2: Done writing 10 entries, time 1774733203970. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:44]:INFO:subscribe-2: Done writing 10 entries, time 1774733203970. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:44]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733203970. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:48]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733207956. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:48]:INFO:subscribe-1: Done writing 1 entries, time 1774733207956. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:48]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733207956. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:49]:INFO:subscribe-2: Done writing 5 entries, time 1774733208968. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:49]:INFO:subscribe-2: Done writing 15 entries, time 1774733208968. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:49]:INFO:FileSystem(docs/rag_context.csv): Done writing 4 entries, time 1774733208968. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:50]:INFO:FileSystem(live_data/stream.jsonl): 101903 entries (8 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:50]:INFO:FileSystem(logs/all_packets.csv): Done writing 21 entries, time 1774733210070. Current batch writes took: 0 ms. All writes so far took: 94 ms.
-[2026-03-29T02:56:53]:INFO:subscribe-1: Done writing 4 entries, time 1774733213192. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:53]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 20 entries, time 1774733213192. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:53]:INFO:FileSystem(docs/anomalies.csv): Done writing 4 entries, time 1774733213192. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:54]:INFO:subscribe-2: Done writing 5 entries, time 1774733214204. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:54]:INFO:subscribe-2: Done writing 10 entries, time 1774733214784. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:54]:INFO:FileSystem(docs/rag_context.csv): Done writing 1 entries, time 1774733214784. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:56:55]:INFO:FileSystem(live_data/stream.jsonl): 102159 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:56:55]:INFO:FileSystem(logs/all_packets.csv): Done writing 19 entries, time 1774733215250. Current batch writes took: 0 ms. All writes so far took: 94 ms.
-[2026-03-29T02:56:59]:INFO:subscribe-2: Done writing 5 entries, time 1774733218996. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:59]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733218996. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:56:59]:INFO:subscribe-1: Done writing 1 entries, time 1774733219584. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:56:59]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733219584. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:56:59]:INFO:FileSystem(docs/rag_context.csv): Done writing 1 entries, time 1774733219584. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:57:00]:INFO:subscribe-2: Done writing 10 entries, time 1774733220126. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:00]:INFO:FileSystem(live_data/stream.jsonl): 119673 entries (9 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:00]:INFO:FileSystem(logs/all_packets.csv): Done writing 61 entries, time 1774733220592. Current batch writes took: 1 ms. All writes so far took: 96 ms.
-[2026-03-29T02:57:04]:INFO:subscribe-2: Done writing 5 entries, time 1774733224368. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:04]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 15 entries, time 1774733224368. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:57:05]:INFO:subscribe-1: Done writing 3 entries, time 1774733224368. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:05]:INFO:FileSystem(docs/anomalies.csv): Done writing 3 entries, time 1774733224368. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:57:05]:INFO:FileSystem(docs/rag_context.csv): Done writing 3 entries, time 1774733224368. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:57:05]:INFO:FileSystem(live_data/stream.jsonl): 103187 entries (8 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:05]:INFO:FileSystem(logs/all_packets.csv): Done writing 35 entries, time 1774733225968. Current batch writes took: 0 ms. All writes so far took: 96 ms.
-[2026-03-29T02:57:05]:INFO:subscribe-2: Done writing 10 entries, time 1774733225968. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:09]:INFO:subscribe-2: Done writing 10 entries, time 1774733229492. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:11]:INFO:FileSystem(live_data/stream.jsonl): 68989 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:11]:INFO:FileSystem(logs/all_packets.csv): Done writing 7 entries, time 1774733231070. Current batch writes took: 0 ms. All writes so far took: 96 ms.
-[2026-03-29T02:57:11]:INFO:subscribe-1: Done writing 2 entries, time 1774733231070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:11]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 10 entries, time 1774733231070. Current batch writes took: 1 ms. All writes so far took: 10 ms.
-[2026-03-29T02:57:11]:INFO:subscribe-2: Done writing 10 entries, time 1774733231070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:11]:INFO:FileSystem(docs/anomalies.csv): Done writing 2 entries, time 1774733231070. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:57:11]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733231070. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:57:15]:INFO:subscribe-2: Done writing 0 entries, time 1774733235570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:17]:INFO:FileSystem(live_data/stream.jsonl): 17254 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:17]:INFO:FileSystem(logs/all_packets.csv): Done writing 2 entries, time 1774733237070. Current batch writes took: 0 ms. All writes so far took: 97 ms.
-[2026-03-29T02:57:17]:INFO:subscribe-1: Done writing 0 entries, time 1774733237070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:17]:INFO:subscribe-2: Done writing 0 entries, time 1774733237070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:17]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733237070. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:57:17]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774733237070. Current batch writes took: 0 ms. All writes so far took: 10 ms.
-[2026-03-29T02:57:17]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733237070. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:57:21]:INFO:subscribe-2: Done writing 17 entries, time 1774733241034. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:22]:INFO:FileSystem(live_data/stream.jsonl): 69110 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:22]:INFO:subscribe-2: Done writing 16 entries, time 1774733241034. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:22]:INFO:FileSystem(logs/all_packets.csv): Done writing 18 entries, time 1774733241768. Current batch writes took: 0 ms. All writes so far took: 97 ms.
-[2026-03-29T02:57:22]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 16 entries, time 1774733241034. Current batch writes took: 0 ms. All writes so far took: 10 ms.
-[2026-03-29T02:57:22]:INFO:subscribe-1: Done writing 2 entries, time 1774733241034. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:22]:INFO:FileSystem(docs/anomalies.csv): Done writing 2 entries, time 1774733241034. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:57:22]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733241034. Current batch writes took: 0 ms. All writes so far took: 2 ms.
-[2026-03-29T02:57:27]:INFO:subscribe-2: Done writing 42 entries, time 1774733245270. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:27]:INFO:FileSystem(live_data/stream.jsonl): 69221 entries (7 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:28]:INFO:FileSystem(logs/all_packets.csv): Done writing 63 entries, time 1774733247778. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:57:28]:INFO:subscribe-1: Done writing 12 entries, time 1774733244066. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:28]:INFO:subscribe-2: Done writing 50 entries, time 1774733247728. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:28]:INFO:FileSystem(docs/anomalies.csv): Done writing 12 entries, time 1774733244066. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T02:57:28]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 50 entries, time 1774733247728. Current batch writes took: 0 ms. All writes so far took: 10 ms.
-[2026-03-29T02:57:28]:INFO:FileSystem(docs/rag_context.csv): Done writing 12 entries, time 1774733244066. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:57:33]:INFO:subscribe-2: Done writing 44 entries, time 1774733252666. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:34]:INFO:FileSystem(live_data/stream.jsonl): 69647 entries (7 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:34]:INFO:FileSystem(logs/all_packets.csv): Done writing 7 entries, time 1774733254002. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:57:34]:INFO:subscribe-1: Done writing 9 entries, time 1774733254002. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:34]:INFO:FileSystem(docs/anomalies.csv): Done writing 9 entries, time 1774733254002. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:57:34]:INFO:FileSystem(docs/rag_context.csv): Done writing 9 entries, time 1774733254002. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:57:35]:INFO:subscribe-2: Done writing 43 entries, time 1774733254002. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:35]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 43 entries, time 1774733254002. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:57:38]:INFO:subscribe-2: Done writing 15 entries, time 1774733258174. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:39]:INFO:FileSystem(live_data/stream.jsonl): 87211 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:39]:INFO:subscribe-1: Done writing 2 entries, time 1774733258810. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:39]:INFO:FileSystem(docs/anomalies.csv): Done writing 2 entries, time 1774733258810. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:57:39]:INFO:FileSystem(logs/all_packets.csv): Done writing 9 entries, time 1774733259582. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:57:39]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733259582. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:57:41]:INFO:subscribe-2: Done writing 14 entries, time 1774733261070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:41]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 14 entries, time 1774733261070. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:57:43]:INFO:subscribe-2: Done writing 5 entries, time 1774733263868. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:45]:INFO:FileSystem(live_data/stream.jsonl): 17451 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:45]:INFO:FileSystem(logs/all_packets.csv): Done writing 1 entries, time 1774733265570. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:57:45]:INFO:subscribe-1: Done writing 0 entries, time 1774733265570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:45]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733265570. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:57:45]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733265570. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:57:47]:INFO:subscribe-2: Done writing 0 entries, time 1774733267070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:47]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774733267070. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:57:49]:INFO:subscribe-2: Done writing 5 entries, time 1774733268998. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:51]:INFO:FileSystem(live_data/stream.jsonl): 17456 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:51]:INFO:FileSystem(logs/all_packets.csv): Done writing 4 entries, time 1774733271570. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:57:51]:INFO:subscribe-1: Done writing 1 entries, time 1774733271570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:51]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733271570. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:57:51]:INFO:FileSystem(docs/rag_context.csv): Done writing 1 entries, time 1774733271570. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:57:53]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733273070. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:57:53]:INFO:subscribe-2: Done writing 5 entries, time 1774733273070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:54]:INFO:subscribe-2: Done writing 5 entries, time 1774733274572. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:57]:INFO:FileSystem(live_data/stream.jsonl): 17462 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:57:57]:INFO:FileSystem(logs/all_packets.csv): Done writing 2 entries, time 1774733277570. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:57:57]:INFO:subscribe-1: Done writing 1 entries, time 1774733277570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:57:57]:INFO:FileSystem(docs/anomalies.csv): Done writing 1 entries, time 1774733277570. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:57:57]:INFO:FileSystem(docs/rag_context.csv): Done writing 1 entries, time 1774733277570. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:57:59]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 8 entries, time 1774733279072. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:57:59]:INFO:subscribe-2: Done writing 8 entries, time 1774733279072. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:00]:INFO:subscribe-2: Done writing 0 entries, time 1774733280570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:03]:INFO:FileSystem(live_data/stream.jsonl): 0 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:03]:INFO:FileSystem(logs/all_packets.csv): Done writing 0 entries, time 1774733283572. Current batch writes took: 0 ms. All writes so far took: 98 ms.
-[2026-03-29T02:58:03]:INFO:subscribe-1: Done writing 0 entries, time 1774733283572. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:03]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733283572. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:58:03]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733283572. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:58:06]:INFO:subscribe-2: Done writing 5 entries, time 1774733285300. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:07]:INFO:subscribe-2: Done writing 5 entries, time 1774733285300. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:07]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 5 entries, time 1774733285300. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:58:08]:INFO:FileSystem(logs/all_packets.csv): Done writing 3696 entries, time 1774733288478. Current batch writes took: 60 ms. All writes so far took: 158 ms.
-[2026-03-29T02:58:09]:INFO:FileSystem(live_data/stream.jsonl): 131548 entries (6 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:11]:INFO:subscribe-2: Done writing 20 entries, time 1774733286734. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:12]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 21 entries, time 1774733286734. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T02:58:12]:INFO:subscribe-2: Done writing 21 entries, time 1774733286734. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:13]:INFO:subscribe-1: Done writing 2 entries, time 1774733286122. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:14]:INFO:FileSystem(docs/anomalies.csv): Done writing 2 entries, time 1774733286122. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:58:14]:INFO:FileSystem(logs/all_packets.csv): Done writing 3340 entries, time 1774733292658. Current batch writes took: 104 ms. All writes so far took: 263 ms.
-[2026-03-29T02:58:15]:INFO:FileSystem(live_data/stream.jsonl): 125602 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:16]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733286122. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:58:19]:INFO:subscribe-2: Done writing 21 entries, time 1774733288478. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:19]:INFO:FileSystem(logs/all_packets.csv): Done writing 3709 entries, time 1774733297196. Current batch writes took: 62 ms. All writes so far took: 325 ms.
-[2026-03-29T02:58:20]:INFO:subscribe-1: Done writing 5 entries, time 1774733287762. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:20]:INFO:FileSystem(docs/anomalies.csv): Done writing 5 entries, time 1774733287762. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:58:22]:INFO:subscribe-2: Done writing 20 entries, time 1774733288478. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:22]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 20 entries, time 1774733288478. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T02:58:22]:INFO:FileSystem(docs/rag_context.csv): Done writing 5 entries, time 1774733287762. Current batch writes took: 0 ms. All writes so far took: 3 ms.
-[2026-03-29T02:58:22]:INFO:FileSystem(live_data/stream.jsonl): 166796 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:25]:INFO:FileSystem(logs/all_packets.csv): Done writing 4241 entries, time 1774733302106. Current batch writes took: 81 ms. All writes so far took: 407 ms.
-[2026-03-29T02:58:27]:INFO:FileSystem(live_data/stream.jsonl): 152978 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:28]:INFO:subscribe-2: Done writing 11 entries, time 1774733289826. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:30]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 11 entries, time 1774733289826. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T02:58:30]:INFO:subscribe-2: Done writing 11 entries, time 1774733289826. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:31]:INFO:FileSystem(logs/all_packets.csv): Done writing 2288 entries, time 1774733310834. Current batch writes took: 33 ms. All writes so far took: 441 ms.
-[2026-03-29T02:58:31]:INFO:subscribe-1: Done writing 7 entries, time 1774733289826. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:31]:INFO:FileSystem(docs/anomalies.csv): Done writing 7 entries, time 1774733289826. Current batch writes took: 0 ms. All writes so far took: 8 ms.
-[2026-03-29T02:58:31]:INFO:FileSystem(docs/rag_context.csv): Done writing 7 entries, time 1774733289826. Current batch writes took: 0 ms. All writes so far took: 4 ms.
-[2026-03-29T02:58:33]:INFO:subscribe-2: Done writing 41 entries, time 1774733299020. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:33]:INFO:FileSystem(live_data/stream.jsonl): 52012 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:35]:INFO:subscribe-2: Done writing 45 entries, time 1774733299020. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:35]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 55 entries, time 1774733299720. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T02:58:37]:INFO:FileSystem(logs/all_packets.csv): Done writing 26 entries, time 1774733315536. Current batch writes took: 0 ms. All writes so far took: 441 ms.
-[2026-03-29T02:58:37]:INFO:subscribe-1: Done writing 13 entries, time 1774733299020. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:37]:INFO:FileSystem(docs/anomalies.csv): Done writing 13 entries, time 1774733299020. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:58:37]:INFO:FileSystem(docs/rag_context.csv): Done writing 9 entries, time 1774733297196. Current batch writes took: 0 ms. All writes so far took: 4 ms.
-[2026-03-29T02:58:39]:INFO:subscribe-2: Done writing 40 entries, time 1774733313916. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:39]:INFO:FileSystem(live_data/stream.jsonl): 104107 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:41]:INFO:subscribe-2: Done writing 59 entries, time 1774733319868. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:41]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 49 entries, time 1774733319868. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T02:58:42]:INFO:FileSystem(logs/all_packets.csv): Done writing 5 entries, time 1774733322570. Current batch writes took: 0 ms. All writes so far took: 441 ms.
-[2026-03-29T02:58:44]:INFO:subscribe-1: Done writing 15 entries, time 1774733324070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:44]:INFO:FileSystem(docs/anomalies.csv): Done writing 15 entries, time 1774733324070. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:58:44]:INFO:FileSystem(docs/rag_context.csv): Done writing 19 entries, time 1774733324070. Current batch writes took: 0 ms. All writes so far took: 4 ms.
-[2026-03-29T02:58:45]:INFO:FileSystem(live_data/stream.jsonl): 0 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:45]:INFO:subscribe-2: Done writing 19 entries, time 1774733325570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:47]:INFO:subscribe-2: Done writing 0 entries, time 1774733327070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:47]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774733327070. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T02:58:49]:INFO:FileSystem(logs/all_packets.csv): Done writing 12 entries, time 1774733329398. Current batch writes took: 0 ms. All writes so far took: 441 ms.
-[2026-03-29T02:58:50]:INFO:subscribe-1: Done writing 3 entries, time 1774733329398. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:50]:INFO:FileSystem(docs/anomalies.csv): Done writing 3 entries, time 1774733329398. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:58:50]:INFO:FileSystem(docs/rag_context.csv): Done writing 3 entries, time 1774733329398. Current batch writes took: 0 ms. All writes so far took: 4 ms.
-[2026-03-29T02:58:51]:INFO:FileSystem(live_data/stream.jsonl): 104184 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:51]:INFO:subscribe-2: Done writing 5 entries, time 1774733331370. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:53]:INFO:subscribe-2: Done writing 6 entries, time 1774733333070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:53]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 6 entries, time 1774733333070. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T02:58:54]:INFO:FileSystem(logs/all_packets.csv): Done writing 0 entries, time 1774733334570. Current batch writes took: 0 ms. All writes so far took: 441 ms.
-[2026-03-29T02:58:56]:INFO:subscribe-1: Done writing 0 entries, time 1774733336070. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:56]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774733336070. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:58:56]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774733336070. Current batch writes took: 0 ms. All writes so far took: 4 ms.
-[2026-03-29T02:58:57]:INFO:FileSystem(live_data/stream.jsonl): 0 entries (5 minibatch(es)) have been sent to the engine
-[2026-03-29T02:58:57]:INFO:subscribe-2: Done writing 0 entries, time 1774733337570. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:58:59]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774733339072. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T02:58:59]:INFO:subscribe-2: Done writing 0 entries, time 1774733339072. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:00]:INFO:FileSystem(logs/all_packets.csv): Done writing 0 entries, time 1774733340570. Current batch writes took: 0 ms. All writes so far took: 441 ms.
-[2026-03-29T02:59:03]:INFO:FileSystem(live_data/stream.jsonl): 52427 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:04]:INFO:subscribe-2: Done writing 6 entries, time 1774733343610. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:05]:INFO:subscribe-2: Done writing 6 entries, time 1774733343610. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:05]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 6 entries, time 1774733343610. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T02:59:05]:INFO:subscribe-1: Done writing 2 entries, time 1774733343610. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:05]:INFO:FileSystem(docs/anomalies.csv): Done writing 2 entries, time 1774733343610. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:59:05]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733343610. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:59:05]:INFO:FileSystem(logs/all_packets.csv): Done writing 1868 entries, time 1774733345628. Current batch writes took: 28 ms. All writes so far took: 470 ms.
-[2026-03-29T02:59:10]:INFO:FileSystem(live_data/stream.jsonl): 170139 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:10]:INFO:subscribe-2: Done writing 21 entries, time 1774733347566. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:10]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 21 entries, time 1774733347566. Current batch writes took: 0 ms. All writes so far took: 14 ms.
-[2026-03-29T02:59:10]:INFO:subscribe-1: Done writing 10 entries, time 1774733347566. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:10]:INFO:FileSystem(docs/anomalies.csv): Done writing 10 entries, time 1774733347566. Current batch writes took: 0 ms. All writes so far took: 9 ms.
-[2026-03-29T02:59:11]:INFO:FileSystem(docs/rag_context.csv): Done writing 10 entries, time 1774733347566. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:59:11]:INFO:subscribe-2: Done writing 20 entries, time 1774733350088. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:13]:INFO:FileSystem(logs/all_packets.csv): Done writing 2618 entries, time 1774733352738. Current batch writes took: 36 ms. All writes so far took: 506 ms.
-[2026-03-29T02:59:16]:INFO:subscribe-2: Done writing 22 entries, time 1774733352738. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:16]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 22 entries, time 1774733352738. Current batch writes took: 0 ms. All writes so far took: 14 ms.
-[2026-03-29T02:59:16]:INFO:subscribe-2: Done writing 0 entries, time 1774733354888. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:17]:INFO:FileSystem(live_data/stream.jsonl): 187419 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:18]:INFO:subscribe-1: Done writing 15 entries, time 1774733352738. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:18]:INFO:FileSystem(docs/anomalies.csv): Done writing 15 entries, time 1774733352738. Current batch writes took: 0 ms. All writes so far took: 10 ms.
-[2026-03-29T02:59:18]:INFO:FileSystem(docs/rag_context.csv): Done writing 15 entries, time 1774733352738. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:59:20]:INFO:FileSystem(logs/all_packets.csv): Done writing 3111 entries, time 1774733360278. Current batch writes took: 67 ms. All writes so far took: 573 ms.
-[2026-03-29T02:59:23]:INFO:subscribe-2: Done writing 5 entries, time 1774733360278. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:23]:INFO:FileSystem(live_data/stream.jsonl): 134236 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:24]:INFO:subscribe-2: Done writing 33 entries, time 1774733360278. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:24]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 33 entries, time 1774733360278. Current batch writes took: 0 ms. All writes so far took: 14 ms.
-[2026-03-29T02:59:24]:INFO:subscribe-1: Done writing 14 entries, time 1774733360278. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:24]:INFO:FileSystem(docs/anomalies.csv): Done writing 14 entries, time 1774733360278. Current batch writes took: 0 ms. All writes so far took: 10 ms.
-[2026-03-29T02:59:24]:INFO:FileSystem(docs/rag_context.csv): Done writing 14 entries, time 1774733360278. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:59:27]:INFO:FileSystem(logs/all_packets.csv): Done writing 1193 entries, time 1774733366220. Current batch writes took: 25 ms. All writes so far took: 599 ms.
-[2026-03-29T02:59:28]:INFO:FileSystem(live_data/stream.jsonl): 139093 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:30]:INFO:subscribe-2: Done writing 22 entries, time 1774733366220. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:31]:INFO:subscribe-2: Done writing 23 entries, time 1774733366220. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:31]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 23 entries, time 1774733366220. Current batch writes took: 0 ms. All writes so far took: 15 ms.
-[2026-03-29T02:59:33]:INFO:subscribe-1: Done writing 16 entries, time 1774733366220. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:33]:INFO:FileSystem(docs/anomalies.csv): Done writing 16 entries, time 1774733366220. Current batch writes took: 0 ms. All writes so far took: 10 ms.
-[2026-03-29T02:59:34]:INFO:FileSystem(live_data/stream.jsonl): 141541 entries (3 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:34]:INFO:FileSystem(docs/rag_context.csv): Done writing 16 entries, time 1774733366220. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:59:34]:INFO:FileSystem(logs/all_packets.csv): Done writing 707 entries, time 1774733374278. Current batch writes took: 9 ms. All writes so far took: 609 ms.
-[2026-03-29T02:59:36]:INFO:subscribe-2: Done writing 24 entries, time 1774733371542. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:37]:INFO:subscribe-2: Done writing 22 entries, time 1774733371542. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:37]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 22 entries, time 1774733371542. Current batch writes took: 0 ms. All writes so far took: 15 ms.
-[2026-03-29T02:59:39]:INFO:subscribe-1: Done writing 12 entries, time 1774733371542. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:40]:INFO:FileSystem(docs/anomalies.csv): Done writing 12 entries, time 1774733371542. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:59:40]:INFO:FileSystem(docs/rag_context.csv): Done writing 10 entries, time 1774733371542. Current batch writes took: 0 ms. All writes so far took: 5 ms.
-[2026-03-29T02:59:40]:INFO:FileSystem(logs/all_packets.csv): Done writing 655 entries, time 1774733379202. Current batch writes took: 14 ms. All writes so far took: 623 ms.
-[2026-03-29T02:59:41]:INFO:FileSystem(live_data/stream.jsonl): 216498 entries (4 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:42]:INFO:subscribe-2: Done writing 6 entries, time 1774733381718. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:46]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 28 entries, time 1774733385276. Current batch writes took: 0 ms. All writes so far took: 15 ms.
-[2026-03-29T02:59:46]:INFO:subscribe-2: Done writing 28 entries, time 1774733385276. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:46]:INFO:subscribe-1: Done writing 11 entries, time 1774733385276. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:46]:INFO:FileSystem(docs/anomalies.csv): Done writing 11 entries, time 1774733385276. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:59:46]:INFO:FileSystem(docs/rag_context.csv): Done writing 11 entries, time 1774733385276. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:59:49]:INFO:FileSystem(live_data/stream.jsonl): 148000 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:49]:INFO:FileSystem(logs/all_packets.csv): Done writing 2601 entries, time 1774733389128. Current batch writes took: 51 ms. All writes so far took: 674 ms.
-[2026-03-29T02:59:50]:INFO:subscribe-2: Done writing 0 entries, time 1774733389128. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:51]:INFO:subscribe-2: Done writing 10 entries, time 1774733389128. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:51]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 10 entries, time 1774733389128. Current batch writes took: 0 ms. All writes so far took: 15 ms.
-[2026-03-29T02:59:52]:INFO:subscribe-1: Done writing 4 entries, time 1774733389128. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T02:59:52]:INFO:FileSystem(docs/anomalies.csv): Done writing 4 entries, time 1774733389128. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T02:59:52]:INFO:FileSystem(docs/rag_context.csv): Done writing 4 entries, time 1774733389128. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T02:59:54]:INFO:FileSystem(live_data/stream.jsonl): 79317 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T02:59:54]:INFO:FileSystem(logs/all_packets.csv): Done writing 1713 entries, time 1774733394160. Current batch writes took: 57 ms. All writes so far took: 732 ms.
-[2026-03-29T02:59:59]:INFO:subscribe-2: Done writing 0 entries, time 1774733397982. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:00]:INFO:subscribe-2: Done writing 21 entries, time 1774733397982. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:00]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 21 entries, time 1774733397982. Current batch writes took: 0 ms. All writes so far took: 16 ms.
-[2026-03-29T03:00:00]:INFO:subscribe-1: Done writing 8 entries, time 1774733397982. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:00]:INFO:FileSystem(docs/anomalies.csv): Done writing 8 entries, time 1774733397982. Current batch writes took: 0 ms. All writes so far took: 11 ms.
-[2026-03-29T03:00:00]:INFO:FileSystem(docs/rag_context.csv): Done writing 8 entries, time 1774733397982. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T03:00:02]:INFO:FileSystem(live_data/stream.jsonl): 173727 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:02]:INFO:FileSystem(logs/all_packets.csv): Done writing 5545 entries, time 1774733402416. Current batch writes took: 205 ms. All writes so far took: 937 ms.
-[2026-03-29T03:00:07]:INFO:FileSystem(live_data/stream.jsonl): 94906 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:07]:INFO:FileSystem(logs/all_packets.csv): Done writing 2786 entries, time 1774733407596. Current batch writes took: 46 ms. All writes so far took: 984 ms.
-[2026-03-29T03:00:09]:INFO:subscribe-2: Done writing 0 entries, time 1774733407596. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:10]:INFO:subscribe-2: Done writing 20 entries, time 1774733407596. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:10]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 20 entries, time 1774733407596. Current batch writes took: 0 ms. All writes so far took: 16 ms.
-[2026-03-29T03:00:11]:INFO:subscribe-1: Done writing 4 entries, time 1774733407596. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:11]:INFO:FileSystem(docs/anomalies.csv): Done writing 4 entries, time 1774733407596. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:11]:INFO:FileSystem(docs/rag_context.csv): Done writing 4 entries, time 1774733407596. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T03:00:16]:INFO:FileSystem(live_data/stream.jsonl): 205976 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:17]:INFO:FileSystem(logs/all_packets.csv): Done writing 5742 entries, time 1774733416808. Current batch writes took: 157 ms. All writes so far took: 1141 ms.
-[2026-03-29T03:00:19]:INFO:subscribe-2: Done writing 0 entries, time 1774733417174. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:22]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 25 entries, time 1774733417174. Current batch writes took: 0 ms. All writes so far took: 16 ms.
-[2026-03-29T03:00:22]:INFO:subscribe-2: Done writing 25 entries, time 1774733417174. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:22]:INFO:FileSystem(live_data/stream.jsonl): 111345 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:22]:INFO:FileSystem(logs/all_packets.csv): Done writing 2169 entries, time 1774733422014. Current batch writes took: 41 ms. All writes so far took: 1182 ms.
-[2026-03-29T03:00:22]:INFO:subscribe-1: Done writing 9 entries, time 1774733417174. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:22]:INFO:FileSystem(docs/anomalies.csv): Done writing 9 entries, time 1774733417174. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:24]:INFO:FileSystem(docs/rag_context.csv): Done writing 9 entries, time 1774733417174. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T03:00:27]:INFO:FileSystem(live_data/stream.jsonl): 115754 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:28]:INFO:subscribe-2: Done writing 0 entries, time 1774733427114. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:29]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 25 entries, time 1774733427114. Current batch writes took: 0 ms. All writes so far took: 16 ms.
-[2026-03-29T03:00:29]:INFO:subscribe-2: Done writing 25 entries, time 1774733427114. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:30]:INFO:subscribe-1: Done writing 12 entries, time 1774733427114. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:30]:INFO:FileSystem(docs/anomalies.csv): Done writing 12 entries, time 1774733427114. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:30]:INFO:FileSystem(docs/rag_context.csv): Done writing 12 entries, time 1774733427114. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T03:00:32]:INFO:FileSystem(live_data/stream.jsonl): 120707 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:32]:INFO:FileSystem(logs/all_packets.csv): Done writing 4953 entries, time 1774733432654. Current batch writes took: 72 ms. All writes so far took: 1255 ms.
-[2026-03-29T03:00:35]:INFO:subscribe-2: Done writing 0 entries, time 1774733432654. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:36]:INFO:subscribe-2: Done writing 12 entries, time 1774733432654. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:36]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 12 entries, time 1774733432654. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:00:36]:INFO:subscribe-1: Done writing 4 entries, time 1774733432654. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:36]:INFO:FileSystem(docs/anomalies.csv): Done writing 4 entries, time 1774733432654. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:36]:INFO:FileSystem(docs/rag_context.csv): Done writing 4 entries, time 1774733432654. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T03:00:38]:INFO:FileSystem(live_data/stream.jsonl): 126189 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:38]:INFO:FileSystem(logs/all_packets.csv): Done writing 2769 entries, time 1774733438240. Current batch writes took: 61 ms. All writes so far took: 1316 ms.
-[2026-03-29T03:00:40]:INFO:subscribe-2: Done writing 0 entries, time 1774733438240. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:41]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 12 entries, time 1774733438240. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:00:41]:INFO:subscribe-2: Done writing 12 entries, time 1774733438240. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:42]:INFO:subscribe-1: Done writing 4 entries, time 1774733438240. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:42]:INFO:FileSystem(docs/anomalies.csv): Done writing 4 entries, time 1774733438240. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:42]:INFO:FileSystem(docs/rag_context.csv): Done writing 4 entries, time 1774733438240. Current batch writes took: 0 ms. All writes so far took: 6 ms.
-[2026-03-29T03:00:44]:INFO:FileSystem(live_data/stream.jsonl): 133465 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:45]:INFO:FileSystem(logs/all_packets.csv): Done writing 4507 entries, time 1774733444862. Current batch writes took: 45 ms. All writes so far took: 1362 ms.
-[2026-03-29T03:00:47]:INFO:subscribe-2: Done writing 0 entries, time 1774733444862. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:48]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 8 entries, time 1774733444862. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:00:48]:INFO:subscribe-2: Done writing 8 entries, time 1774733444862. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:48]:INFO:subscribe-1: Done writing 2 entries, time 1774733444862. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:48]:INFO:FileSystem(docs/anomalies.csv): Done writing 2 entries, time 1774733444862. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:48]:INFO:FileSystem(docs/rag_context.csv): Done writing 2 entries, time 1774733444862. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T03:00:51]:INFO:FileSystem(live_data/stream.jsonl): 142177 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:52]:INFO:FileSystem(logs/all_packets.csv): Done writing 4205 entries, time 1774733451760. Current batch writes took: 37 ms. All writes so far took: 1400 ms.
-[2026-03-29T03:00:54]:INFO:subscribe-2: Done writing 0 entries, time 1774733451760. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:55]:INFO:subscribe-2: Done writing 14 entries, time 1774733451760. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:55]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 14 entries, time 1774733451760. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:00:56]:INFO:subscribe-1: Done writing 8 entries, time 1774733451760. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:00:56]:INFO:FileSystem(docs/anomalies.csv): Done writing 8 entries, time 1774733451760. Current batch writes took: 0 ms. All writes so far took: 12 ms.
-[2026-03-29T03:00:56]:INFO:FileSystem(docs/rag_context.csv): Done writing 8 entries, time 1774733451760. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T03:00:59]:INFO:FileSystem(live_data/stream.jsonl): 150222 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:00:59]:INFO:FileSystem(logs/all_packets.csv): Done writing 3840 entries, time 1774733459120. Current batch writes took: 50 ms. All writes so far took: 1450 ms.
-[2026-03-29T03:01:02]:INFO:subscribe-2: Done writing 0 entries, time 1774733459120. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:04]:INFO:subscribe-2: Done writing 13 entries, time 1774733459120. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:04]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 13 entries, time 1774733459120. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:01:04]:INFO:subscribe-1: Done writing 8 entries, time 1774733459120. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:04]:INFO:FileSystem(docs/anomalies.csv): Done writing 8 entries, time 1774733459120. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T03:01:04]:INFO:FileSystem(docs/rag_context.csv): Done writing 8 entries, time 1774733459120. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T03:01:08]:INFO:FileSystem(live_data/stream.jsonl): 158976 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:01:08]:INFO:FileSystem(logs/all_packets.csv): Done writing 4914 entries, time 1774733468414. Current batch writes took: 144 ms. All writes so far took: 1595 ms.
-[2026-03-29T03:01:12]:INFO:subscribe-2: Done writing 0 entries, time 1774733469596. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:13]:INFO:subscribe-2: Done writing 14 entries, time 1774733469596. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:13]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 14 entries, time 1774733469596. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:01:14]:INFO:subscribe-1: Done writing 8 entries, time 1774733469596. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:14]:INFO:FileSystem(docs/anomalies.csv): Done writing 8 entries, time 1774733469596. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T03:01:14]:INFO:FileSystem(docs/rag_context.csv): Done writing 8 entries, time 1774733469596. Current batch writes took: 0 ms. All writes so far took: 7 ms.
-[2026-03-29T03:01:17]:INFO:FileSystem(live_data/stream.jsonl): 170283 entries (2 minibatch(es)) have been sent to the engine
-[2026-03-29T03:01:18]:INFO:FileSystem(logs/all_packets.csv): Done writing 6393 entries, time 1774733477520. Current batch writes took: 102 ms. All writes so far took: 1697 ms.
-[2026-03-29T03:01:23]:INFO:subscribe-2: Done writing 0 entries, time 1774733477520. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:26]:INFO:subscribe-2: Done writing 15 entries, time 1774733477520. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:26]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 15 entries, time 1774733477520. Current batch writes took: 0 ms. All writes so far took: 17 ms.
-[2026-03-29T03:01:26]:INFO:FileSystem(live_data/stream.jsonl): 181369 entries (1 minibatch(es)) have been sent to the engine
-[2026-03-29T03:01:28]:INFO:FileSystem(logs/all_packets.csv): Done writing 4693 entries, time 1774733486490. Current batch writes took: 86 ms. All writes so far took: 1784 ms.
-[2026-03-29T03:01:28]:INFO:subscribe-1: Done writing 10 entries, time 1774733477520. Current batch writes took: 0 ms. All writes so far took: 0 ms.
-[2026-03-29T03:01:28]:INFO:FileSystem(docs/anomalies.csv): Done writing 10 entries, time 1774733477520. Current batch writes took: 0 ms. All writes so far took: 13 ms.
-[2026-03-29T03:01:30]:INFO:FileSystem(docs/rag_context.csv): Done writing 8 entries, time 1774733477520. Current batch writes took: 0 ms. All writes so far took: 7 ms.
+[2026-03-29T07:11:05]:INFO:Preparing Pathway computation
+[2026-03-29T07:11:05]:INFO:Enter read_snapshot method with reader PosixLike
+[2026-03-29T07:11:06]:INFO:Enter read_snapshot method with reader Python
+[2026-03-29T07:11:06]:INFO:FileSystem(live_data/stream.jsonl): 0 entries (1 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:06]:INFO:PythonReader: 0 entries (1 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:06]:INFO:FileSystem(logs/all_packets.csv): Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:subscribe-1: Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:subscribe-2: Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:subscribe-2: Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:subscribe-4: Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:FileSystem(docs/rag_context.csv): Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:06]:INFO:FileSystem(docs/anomalies.csv): Done writing 0 entries, time 1774748465260. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:12]:INFO:FileSystem(live_data/stream.jsonl): 38856 entries (23 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:12]:INFO:subscribe-2: Done writing 98 entries, time 1774748468610. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:12]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 98 entries, time 1774748468610. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:12]:INFO:FileSystem(logs/all_packets.csv): Done writing 1190 entries, time 1774748472008. Current batch writes took: 15 ms. All writes so far took: 15 ms.
+[2026-03-29T07:11:12]:INFO:subscribe-1: Done writing 38 entries, time 1774748468584. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:12]:INFO:subscribe-2: Done writing 104 entries, time 1774748469290. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:12]:INFO:FileSystem(docs/anomalies.csv): Done writing 38 entries, time 1774748468584. Current batch writes took: 1 ms. All writes so far took: 1 ms.
+[2026-03-29T07:11:13]:INFO:FileSystem(docs/rag_context.csv): Done writing 34 entries, time 1774748468584. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:19]:INFO:FileSystem(live_data/stream.jsonl): 72132 entries (27 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:19]:INFO:subscribe-2: Done writing 121 entries, time 1774748472034. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:19]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 121 entries, time 1774748472034. Current batch writes took: 0 ms. All writes so far took: 1 ms.
+[2026-03-29T07:11:19]:INFO:subscribe-2: Done writing 113 entries, time 1774748472034. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:19]:INFO:FileSystem(logs/all_packets.csv): Done writing 544 entries, time 1774748479178. Current batch writes took: 4 ms. All writes so far took: 20 ms.
+[2026-03-29T07:11:46]:INFO:FileSystem(live_data/stream.jsonl): 38652 entries (12 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:47]:INFO:subscribe-1: Done writing 45 entries, time 1774748471076. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:47]:INFO:FileSystem(docs/anomalies.csv): Done writing 45 entries, time 1774748471076. Current batch writes took: 0 ms. All writes so far took: 2 ms.
+[2026-03-29T07:11:48]:INFO:FileSystem(logs/all_packets.csv): Done writing 344 entries, time 1774748506974. Current batch writes took: 2 ms. All writes so far took: 23 ms.
+[2026-03-29T07:11:50]:INFO:FileSystem(docs/rag_context.csv): Done writing 45 entries, time 1774748471076. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:53]:INFO:subscribe-1: Done writing 19 entries, time 1774748472008. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:53]:INFO:subscribe-2: Done writing 30 entries, time 1774748473154. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:53]:INFO:FileSystem(docs/anomalies.csv): Done writing 19 entries, time 1774748472008. Current batch writes took: 0 ms. All writes so far took: 2 ms.
+[2026-03-29T07:11:53]:INFO:FileSystem(live_data/stream.jsonl): 401372 entries (81 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:54]:INFO:FileSystem(logs/all_packets.csv): Done writing 414 entries, time 1774748508036. Current batch writes took: 3 ms. All writes so far took: 26 ms.
+[2026-03-29T07:11:55]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 31 entries, time 1774748473154. Current batch writes took: 0 ms. All writes so far took: 1 ms.
+[2026-03-29T07:11:55]:INFO:subscribe-2: Done writing 31 entries, time 1774748473154. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:11:56]:INFO:FileSystem(docs/rag_context.csv): Done writing 57 entries, time 1774748473154. Current batch writes took: 0 ms. All writes so far took: 1 ms.
+[2026-03-29T07:11:59]:INFO:FileSystem(live_data/stream.jsonl): 182747 entries (32 minibatch(es)) have been sent to the engine
+[2026-03-29T07:11:59]:INFO:FileSystem(logs/all_packets.csv): Done writing 930 entries, time 1774748517050. Current batch writes took: 6 ms. All writes so far took: 33 ms.
+[2026-03-29T07:12:00]:INFO:subscribe-2: Done writing 90 entries, time 1774748475600. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:05]:INFO:FileSystem(live_data/stream.jsonl): 85860 entries (13 minibatch(es)) have been sent to the engine
+[2026-03-29T07:12:05]:INFO:FileSystem(logs/all_packets.csv): Done writing 24 entries, time 1774748517238. Current batch writes took: 0 ms. All writes so far took: 33 ms.
+[2026-03-29T07:12:06]:INFO:subscribe-2: Done writing 141 entries, time 1774748479178. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:06]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 141 entries, time 1774748479178. Current batch writes took: 0 ms. All writes so far took: 2 ms.
+[2026-03-29T07:12:06]:INFO:subscribe-2: Done writing 50 entries, time 1774748479178. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:10]:INFO:FileSystem(live_data/stream.jsonl): 336085 entries (42 minibatch(es)) have been sent to the engine
+[2026-03-29T07:12:23]:INFO:FileSystem(live_data/stream.jsonl): 35542 entries (4 minibatch(es)) have been sent to the engine
+[2026-03-29T07:12:24]:INFO:FileSystem(logs/all_packets.csv): Done writing 786 entries, time 1774748529612. Current batch writes took: 10 ms. All writes so far took: 44 ms.
+[2026-03-29T07:12:24]:INFO:subscribe-1: Done writing 83 entries, time 1774748476402. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:24]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 92 entries, time 1774748506974. Current batch writes took: 0 ms. All writes so far took: 3 ms.
+[2026-03-29T07:12:24]:INFO:subscribe-2: Done writing 92 entries, time 1774748506974. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:29]:INFO:subscribe-2: Done writing 274 entries, time 1774748507798. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:29]:INFO:FileSystem(docs/anomalies.csv): Done writing 83 entries, time 1774748476402. Current batch writes took: 1 ms. All writes so far took: 3 ms.
+[2026-03-29T07:12:29]:INFO:FileSystem(live_data/stream.jsonl): 99978 entries (11 minibatch(es)) have been sent to the engine
+[2026-03-29T07:12:30]:INFO:FileSystem(logs/all_packets.csv): Done writing 167 entries, time 1774748529934. Current batch writes took: 3 ms. All writes so far took: 48 ms.
+[2026-03-29T07:12:43]:INFO:subscribe-2: Done writing 157 entries, time 1774748508036. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:43]:INFO:FileSystem(live_data/stream.jsonl): 95772 entries (10 minibatch(es)) have been sent to the engine
+[2026-03-29T07:12:44]:INFO:FileSystem(logs/all_packets.csv): Done writing 51 entries, time 1774748530648. Current batch writes took: 0 ms. All writes so far took: 48 ms.
+[2026-03-29T07:12:44]:INFO:subscribe-1: Done writing 12 entries, time 1774748479178. Current batch writes took: 0 ms. All writes so far took: 0 ms.
+[2026-03-29T07:12:44]:INFO:FileSystem(logs/debug_graph_edges.csv): Done writing 225 entries, time 1774748507854. Current batch writes took: 1 ms. All writes so far took: 4 ms.
+[2026-03-29T07:12:47]:INFO:subscribe-2: Done writing 225 entries, time 1774748507854. Current batch writes took: 0 ms. All writes so far took: 0 ms.

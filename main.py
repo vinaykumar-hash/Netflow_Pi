@@ -489,6 +489,12 @@ flow_pulse = flow_analysis.windowby(
     encryption=pw.reducers.max(pw.this.is_encrypted),
     whitelisted=pw.reducers.max(pw.this.whitelisted),
 )
+flow_pulse = flow_pulse.select(
+    *pw.this,
+    type=pw.apply(lambda _: "flow_update", pw.this.flow),
+    detector=pw.apply(lambda _: "heuristic", pw.this.flow),
+    status=pw.apply(lambda reason: "anomaly" if str(reason or "").strip() else "ok", pw.this.anomaly_reason),
+)
 
 
 # Filter for anomalies only (Shared logic)

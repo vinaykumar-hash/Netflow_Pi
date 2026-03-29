@@ -14,10 +14,48 @@ import ReactMarkdown from 'react-markdown';
 import NetworkGraph from './components/NetworkGraph';
 
 const isAnomalous = (flow) => {
+  if (flow.detector === 'autoencoder') {
+    return flow.status === 'anomaly' || Number(flow.anomaly_score || 0) > 0;
+  }
+  if (flow.status) {
+    return flow.status === 'anomaly';
+  }
   return (flow.flag_anomalies && flow.flag_anomalies.length > 0) ||
     flow.ttl_anomaly ||
     flow.sequence_anomaly ||
     flow.small_packet_anomaly;
+};
+
+const defaultAutoencoderStatus = {
+  engine: 'heuristic',
+  enabled: false,
+  training: {
+    running: false,
+    started_at: null,
+    packets_seen: 0,
+    packets_trained: 0,
+    buffer_size: 1000,
+    current_buffer_count: 0,
+    batches_completed: 0,
+    last_threshold: null,
+    last_checkpoint_at: null,
+    last_error: null,
+    phase: 'idle',
+  },
+  detection: {
+    running: false,
+    model_loaded: false,
+    model_version: null,
+    last_alert_at: null,
+    last_error: null,
+  },
+  model: {
+    exists: false,
+    version: null,
+    trained_at: null,
+    threshold: null,
+    feature_count: 12,
+  },
 };
 
 
@@ -86,10 +124,18 @@ const SecurityTable = React.memo(({ flows, formatTime, selectedRows = [], onRowS
                 </td>
                 <td className="px-6 py-3 font-mono text-[var(--text-accent)] truncate">{flow.flow}</td>
                 <td className="px-6 py-3">
-                  <span className={`px-2 py-1 rounded-md text-[10px] uppercase font-bold tracking-wide ${flow.encryption === 'Encrypted' ? 'bg-emerald-500/10 text-[var(--success-text)] border border-emerald-500/20' : 'bg-amber-500/10 text-[var(--warning-text)] border border-amber-500/20'
-                    }`}>
-                    {flow.encryption}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={`px-2 py-1 rounded-md text-[10px] uppercase font-bold tracking-wide ${flow.encryption === 'Encrypted' ? 'bg-emerald-500/10 text-[var(--success-text)] border border-emerald-500/20' : 'bg-amber-500/10 text-[var(--warning-text)] border border-amber-500/20'
+                      }`}>
+                      {flow.encryption}
+                    </span>
+                    <span className={`px-2 py-1 rounded-md text-[10px] uppercase font-bold tracking-wide border ${flow.detector === 'autoencoder'
+                      ? 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20'
+                      : 'bg-white/5 text-[var(--text-secondary)] border-[var(--border-color)]'
+                      }`}>
+                      {flow.detector === 'autoencoder' ? 'AUTOENC' : 'HEUR'}
+                    </span>
+                  </div>
                 </td>
                 <td className="px-6 py-3">
                   {isAnomalous(flow) ? (
@@ -155,6 +201,8 @@ const App = () => {
   const [isSpoofingLoading, setIsSpoofingLoading] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   const [interfaces, setInterfaces] = useState([]);
+  const [autoencoderStatus, setAutoencoderStatus] = useState(defaultAutoencoderStatus);
+  const [autoencoderAction, setAutoencoderAction] = useState('');
 
   useEffect(() => {
     document.documentElement.className = theme === 'light' ? 'light-theme' : '';
@@ -223,9 +271,70 @@ const App = () => {
     } catch (e) { console.error(e); }
   };
 
+  const fetchAutoencoderStatus = async () => {
+    try {
+      const res = await axios.get(`${apiBaseUrl}/api/autoencoder/status/`);
+      setAutoencoderStatus({ ...defaultAutoencoderStatus, ...res.data, training: { ...defaultAutoencoderStatus.training, ...(res.data.training || {}) }, detection: { ...defaultAutoencoderStatus.detection, ...(res.data.detection || {}) }, model: { ...defaultAutoencoderStatus.model, ...(res.data.model || {}) } });
+    } catch (e) { console.error(e); }
+  };
+
+  const triggerAutoencoderAction = async (path, body = {}) => {
+    setAutoencoderAction(path);
+    if (path === '/api/autoencoder/train/start/') {
+      setAutoencoderStatus((prev) => ({
+        ...prev,
+        training: {
+          ...prev.training,
+          running: true,
+          phase: 'starting',
+          last_error: null,
+        },
+        detection: {
+          ...prev.detection,
+          last_error: null,
+        },
+      }));
+    }
+    try {
+      const res = await axios.post(`${apiBaseUrl}${path}`, body);
+      setAutoencoderStatus({ ...defaultAutoencoderStatus, ...res.data, training: { ...defaultAutoencoderStatus.training, ...(res.data.training || {}) }, detection: { ...defaultAutoencoderStatus.detection, ...(res.data.detection || {}) }, model: { ...defaultAutoencoderStatus.model, ...(res.data.model || {}) } });
+    } catch (e) {
+      console.error(e);
+      try {
+        const statusRes = await axios.get(`${apiBaseUrl}/api/autoencoder/status/`);
+        const nextStatus = {
+          ...defaultAutoencoderStatus,
+          ...statusRes.data,
+          training: { ...defaultAutoencoderStatus.training, ...(statusRes.data.training || {}) },
+          detection: { ...defaultAutoencoderStatus.detection, ...(statusRes.data.detection || {}) },
+          model: { ...defaultAutoencoderStatus.model, ...(statusRes.data.model || {}) },
+        };
+        setAutoencoderStatus(nextStatus);
+        if (!(path === '/api/autoencoder/train/start/' && nextStatus.training.running)) {
+          const errorMessage = e?.response?.data?.error || e.message || 'Unknown error';
+          window.alert(`Autoencoder action failed: ${errorMessage}`);
+        }
+      } catch {
+        const errorMessage = e?.response?.data?.error || e.message || 'Unknown error';
+        window.alert(`Autoencoder action failed: ${errorMessage}`);
+      }
+    }
+    setAutoencoderAction('');
+  };
+
   useEffect(() => {
     fetchWhitelist();
+    fetchAutoencoderStatus();
   }, []);
+
+  useEffect(() => {
+    if (!showSettings && !autoencoderStatus.training.running && !autoencoderStatus.detection.running) {
+      return undefined;
+    }
+    fetchAutoencoderStatus();
+    const interval = setInterval(fetchAutoencoderStatus, 2000);
+    return () => clearInterval(interval);
+  }, [showSettings, autoencoderStatus.training.running, autoencoderStatus.detection.running]);
 
   useEffect(() => {
     // WebSocket Connection
@@ -286,9 +395,7 @@ const App = () => {
 
           // Update Stats
           const totalPackets = newFlows.reduce((acc, f) => acc + (f.packet_count || 0), 0);
-          const anomalies = newFlows.filter(f =>
-            (f.flag_anomalies && f.flag_anomalies.length > 0) || f.ttl_anomaly || f.sequence_anomaly || f.small_packet_anomaly
-          ).length;
+          const anomalies = newFlows.filter(f => isAnomalous(f)).length;
           const encrypted = newFlows.filter(f => f.encryption === 'Encrypted').length;
 
           setStats({
@@ -663,7 +770,7 @@ Encryption: ${r.encryption}
                 ) : (
                   <div className="grid grid-cols-2 gap-2">
                     {interfaces.map(iface => {
-                      const selected = (whitelist.capture_interface || 'wlo1') === iface.name;
+                      const selected = (whitelist.capture_interface || 'any') === iface.name;
                       const isUp = iface.up || iface.state === 'UP';
                       return (
                         <button
@@ -690,6 +797,93 @@ Encryption: ${r.encryption}
                       );
                     })}
                   </div>
+                )}
+              </div>
+
+              <div className="bg-[var(--bg-card-hover)] p-4 border border-[var(--border-color)]">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-bold text-[var(--text-primary)]">Autoencoder</h3>
+                  <button
+                    onClick={fetchAutoencoderStatus}
+                    className="text-[11px] text-indigo-400 hover:text-indigo-300 flex items-center gap-1 border border-indigo-500/30 px-2 py-1 transition-colors hover:bg-indigo-500/10"
+                  >
+                    <Activity className="w-3 h-3" /> Refresh
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Engine</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.engine}</p>
+                  </div>
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Model</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.model.exists ? `Ready (${autoencoderStatus.model.version || 'unknown'})` : 'Not trained'}</p>
+                  </div>
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Training</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.training.phase || 'idle'}</p>
+                  </div>
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Threshold</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.model.threshold != null ? Number(autoencoderStatus.model.threshold).toFixed(4) : '--'}</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-3 mb-4">
+                  <button
+                    onClick={() => triggerAutoencoderAction('/api/autoencoder/train/start/', { replace_existing: true })}
+                    disabled={autoencoderStatus.training.running || autoencoderAction !== ''}
+                    className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold transition-colors disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {autoencoderAction === '/api/autoencoder/train/start/' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+                    Start Training
+                  </button>
+                  <button
+                    onClick={() => triggerAutoencoderAction('/api/autoencoder/train/stop/')}
+                    disabled={!autoencoderStatus.training.running || autoencoderAction !== ''}
+                    className="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white text-sm font-bold transition-colors disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {autoencoderAction === '/api/autoencoder/train/stop/' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Square className="w-4 h-4" />}
+                    Stop Training
+                  </button>
+                  <button
+                    onClick={() => triggerAutoencoderAction('/api/autoencoder/detection/enable/', { enabled: true })}
+                    disabled={autoencoderStatus.detection.running || !autoencoderStatus.model.exists || autoencoderAction !== ''}
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold transition-colors disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {autoencoderAction === '/api/autoencoder/detection/enable/' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
+                    Enable Detection
+                  </button>
+                  <button
+                    onClick={() => triggerAutoencoderAction('/api/autoencoder/detection/disable/')}
+                    disabled={!autoencoderStatus.detection.running || autoencoderAction !== ''}
+                    className="px-4 py-2 border border-[var(--border-color)] hover:bg-[var(--bg-card-hover)] text-sm font-bold transition-colors disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {autoencoderAction === '/api/autoencoder/detection/disable/' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Power className="w-4 h-4" />}
+                    Disable Detection
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Packets Seen</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.training.packets_seen}</p>
+                  </div>
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Buffer</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.training.current_buffer_count} / {autoencoderStatus.training.buffer_size}</p>
+                  </div>
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Packets Trained</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.training.packets_trained}</p>
+                  </div>
+                  <div className="border border-[var(--border-color)] p-3">
+                    <p className="text-[var(--text-secondary)] uppercase tracking-wider mb-1">Batches</p>
+                    <p className="font-mono text-[var(--text-primary)]">{autoencoderStatus.training.batches_completed}</p>
+                  </div>
+                </div>
+                {(autoencoderStatus.training.last_error || autoencoderStatus.detection.last_error) && (
+                  <p className="mt-3 text-xs text-rose-300 border border-rose-500/30 bg-rose-500/10 p-3 font-mono">
+                    {autoencoderStatus.training.last_error || autoencoderStatus.detection.last_error}
+                  </p>
                 )}
               </div>
 

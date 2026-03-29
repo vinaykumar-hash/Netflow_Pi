@@ -78,6 +78,11 @@ def _merge_flow_payload(flow_key: str) -> dict | None:
             int(overlay.get("packet_count") or 0),
         )
         merged["last_packet_time"] = overlay.get("last_packet_time", merged.get("last_packet_time"))
+    elif engine == "autoencoder":
+        merged["anomaly_score"] = 0
+        merged["last_packet_info"] = "Awaiting autoencoder score"
+        merged["detector"] = "autoencoder"
+        merged["status"] = "ok"
     else:
         merged["detector"] = merged.get("detector") or "heuristic"
         merged["status"] = merged.get("status") or "ok"

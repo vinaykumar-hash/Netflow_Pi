@@ -2,6 +2,7 @@ import json
 import os
 import signal
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -99,8 +100,13 @@ def read_status():
 
 def atomic_write_json(path: Path, payload):
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = path.with_suffix(path.suffix + ".tmp")
-    with open(tmp_path, "w", encoding="utf-8") as f:
+    fd, tmp_name = tempfile.mkstemp(
+        dir=str(path.parent),
+        prefix=f"{path.name}.",
+        suffix=".tmp",
+    )
+    tmp_path = Path(tmp_name)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
         json.dump(payload, f)
     os.replace(tmp_path, path)
 

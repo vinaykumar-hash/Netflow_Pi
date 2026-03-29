@@ -1,3 +1,1 @@
-Starting System Monitor...
-Traceback (most recent call last):
-  File "/home/pi/Documents/Netflow/system_monitor.py", line 85, in <module>
+Failed to send stats: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /api/update/ (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))

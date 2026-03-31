@@ -34,7 +34,10 @@ FIELDS = [
     "frame.len",
     "tcp.len",
     "udp.length",
-    "_ws.col.info"
+    "_ws.col.info",
+    "tcp.payload",
+    "udp.payload",
+    "data.data",
 ]
 
 FIELD_MAP = [
@@ -44,7 +47,7 @@ FIELD_MAP = [
     "tcp_flags_rst", "tcp_flags_psh", "tcp_flags_urg", "tcp_retransmission",
     "tcp_window_size", "ttl_hop_limit_v4", "ttl_hop_limit_v6",
     "ip_flags_mf", "ipv6_fragment", "packet_size", "payload_len_tcp",
-    "payload_len_udp", "info"
+    "payload_len_udp", "info", "payload_hex_tcp", "payload_hex_udp", "payload_hex_data"
 ]
 
 OUTPUT_FILE = "live_data/stream.jsonl"
@@ -158,6 +161,7 @@ def main():
                     "dst_port": str(int((row["dst_port_tcp"] or row["dst_port_udp"] or "0").split(",")[0] or "0")),
                     "packet_size": row["packet_size"],
                     "payload_len": row["payload_len_tcp"] or row["payload_len_udp"] or "0",
+                    "raw_payload_hex": row["payload_hex_tcp"] or row["payload_hex_udp"] or row["payload_hex_data"] or "",
                     "info": row["info"],
                     "tcp_seq": row["tcp_seq"] or "0",
                     "tcp_flags_syn": row["tcp_flags_syn"],

@@ -59,6 +59,7 @@ class PacketSchema(pw.Schema):
     dst_port: str | None
     packet_size: str | None
     payload_len: str | None
+    raw_payload_hex: str | None
     info: str | None
     tcp_seq: str | None
     tcp_flags_syn: str | None
@@ -92,7 +93,8 @@ pw.io.csv.write(
         pw.this.dst_ip,
         pw.this.src_port,
         pw.this.dst_port,
-        pw.this.protocols
+        pw.this.protocols,
+        pw.this.raw_payload_hex,
     ).filter(_gate_all_packets(pw.this.timestamp)),
     filename="logs/all_packets.csv"
 )
@@ -232,6 +234,7 @@ def get_last_packet_info_udf(infos: tuple) -> str:
 @pw.udf
 def get_last_encryption_udf(encs: tuple) -> str:
     return str(encs[-1]) if encs else "Unknown"
+
 @pw.udf(return_type=str)
 def safe_flags_stub(*args) -> str:
     return "OK"
@@ -297,6 +300,7 @@ flow_stats = packets_with_key.groupby(pw.this.flow_key).windowby(
     min_time=pw.reducers.min(pw.this.timestamp),
     max_time=pw.reducers.max(pw.this.timestamp),
     event_time=pw.reducers.max(pw.this.timestamp),
+    latest_raw_payload_hex=pw.reducers.max(pw.this.raw_payload_hex),
 
     src_ip=pw.reducers.max(pw.this.src_ip),
     dst_ip=pw.reducers.max(pw.this.dst_ip),
@@ -342,7 +346,8 @@ flow_features = flow_stats.select(
     dst_ip=get_dip(pw.this.flow_key),
     src_port=get_sport(pw.this.flow_key),
     dst_port=get_dport(pw.this.flow_key),
-    is_encrypted=pw.this.is_encrypted
+    is_encrypted=pw.this.is_encrypted,
+    raw_payload_hex=pw.this.latest_raw_payload_hex,
 ).filter(
     pw.this.src_port != pw.this.dst_port
 )
@@ -451,7 +456,8 @@ flow_analysis = flows_with_whitelist.select(
         pw.this.total_bytes,
         pw.this.duration,
         pw.this.dst_port
-    )
+    ),
+    latest_raw_payload_hex=pw.this.raw_payload_hex,
 ).select(
     *pw.this,
     anomaly_score=mask_score(
@@ -478,6 +484,7 @@ flow_pulse = flow_analysis.windowby(
     anomaly_score=pw.reducers.max(pw.this.anomaly_score),
     anomaly_reason=pw.reducers.max(pw.this.anomaly_reason),
     last_packet_info=pw.reducers.max(pw.this.anomaly_reason),
+    last_raw_payload_hex=pw.reducers.max(pw.this.latest_raw_payload_hex),
     confidence=pw.reducers.max(pw.this.confidence),
     packet_count=pw.reducers.max(pw.this.packet_count),
     total_bytes=pw.reducers.max(pw.this.total_bytes),

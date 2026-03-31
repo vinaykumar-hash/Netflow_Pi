@@ -204,10 +204,22 @@ const App = () => {
   const [autoencoderStatus, setAutoencoderStatus] = useState(defaultAutoencoderStatus);
   const [autoencoderAction, setAutoencoderAction] = useState('');
 
+  const formatPayloadHex = (payloadHex) => {
+    const normalized = String(payloadHex || '').replace(/[:\s]/g, '').trim();
+    if (!normalized) return '';
+    return normalized.match(/.{1,2}/g)?.join(' ') || normalized;
+  };
+
   useEffect(() => {
     document.documentElement.className = theme === 'light' ? 'light-theme' : '';
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    setSelectedRows((prev) => prev
+      .map((selected) => flows.find((flow) => flow.flow === selected.flow) || selected)
+      .filter((selected) => flows.some((flow) => flow.flow === selected.flow)));
+  }, [flows]);
 
   const fetchDevices = async () => {
     setIsLoadingDevices(true);
@@ -618,6 +630,7 @@ Flow: ${r.flow}
 Description: ${r.last_packet_info}
 Packets: ${r.packet_count}
 Encryption: ${r.encryption}
+Raw Payload Hex: ${formatPayloadHex(r.last_raw_payload_hex) || 'No payload captured'}
 `).join('\n---\n')}
     ----------------------------
 ` : '';
@@ -1223,6 +1236,22 @@ Encryption: ${r.encryption}
 
               {/* Context Preview & Chat Input */}
               <div className="border-t border-[var(--border-color)] bg-[var(--bg-input)] backdrop-blur-xl">
+                {selectedRows.length > 0 && (
+                  <div className="border-b border-[var(--border-color)] p-3 max-h-56 overflow-y-auto scrollbar-thin">
+                    <div className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] mb-3">Selected Flow Payload</div>
+                    <div className="space-y-3">
+                      {selectedRows.map((row) => (
+                        <div key={`${row.flow}-payload`} className="border border-[var(--border-color)] bg-[var(--bg-card-hover)] p-3">
+                          <div className="text-[10px] font-mono text-[var(--text-accent)] mb-2 break-all">{row.flow}</div>
+                          <div className="text-[10px] text-[var(--text-secondary)] mb-2">{row.last_packet_info}</div>
+                          <pre className="text-[10px] leading-5 font-mono text-[var(--text-primary)] whitespace-pre-wrap break-all max-h-28 overflow-y-auto scrollbar-thin">
+                            {formatPayloadHex(row.last_raw_payload_hex) || 'No raw payload captured for the latest packet in this flow.'}
+                          </pre>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {/* Selected Context Chips */}
                 {selectedRows.length > 0 && (
                   <div className="p-2 flex flex-wrap gap-2 border-b border-[var(--border-color)] max-h-32 overflow-y-auto scrollbar-thin">
